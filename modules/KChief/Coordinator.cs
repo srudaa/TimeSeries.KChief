@@ -39,16 +39,8 @@ namespace Dolittle.Edge.KChief
         }
 
 
-        void ChannelReceived(Channel channel)
-        {          
-            var dataPoint = new TagDataPoint<ChannelValue>
-            {
-                Tag = channel.Id.ToString(),
-                ControlSystem = "KChief",
-                Timestamp = Timestamp.UtcNow,
-                Value = channel.Value
-            };
-
+        void ChannelReceived(TagDataPoint<double> dataPoint)
+        {
             _client.SendAsJson("output", dataPoint).Wait();
         }
     }

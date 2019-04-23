@@ -14,5 +14,7 @@
     <ItemGroup>
         <PackageReference Include="Dolittle.Edge.Modules" Version="2.*" />
         <PackageReference Include="Google.Protobuf" Version="3.7.0" />
+        <PackageReference Include="MQTTNet" Version="2.8.5" />
+        <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="2.8.5" />
     </ItemGroup>
 </Project>

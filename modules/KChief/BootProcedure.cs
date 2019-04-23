@@ -35,19 +35,19 @@ namespace Dolittle.Edge.KChief
         /// <inheritdoc/>
         public void Perform()
         {
-            //_coordinator.Initialize();
-            
+            _coordinator.Initialize();
             
             // NOTE: This is test code that **MUST** be removed when we've verified it works (PS: clean up using statements :))
+            /*
             foreach (var path in Directory.EnumerateFiles("../../sample/"))
             {
                 var message = File.ReadAllBytes(path);
                 _parser.Parse(message, dataPoint => {
                     var json = JsonConvert.SerializeObject(dataPoint, Formatting.None);
-                    Console.WriteLine(json);
+                    Console.Error.WriteLine(json);
                 });
             }
-
+            */
         }
     }
 }

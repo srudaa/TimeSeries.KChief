@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
+using Dolittle.Edge.Modules;
 
 namespace Dolittle.Edge.KChief
 {
@@ -20,6 +21,6 @@ namespace Dolittle.Edge.KChief
         /// Subscribe to <see cref="Channel"/> values coming
         /// </summary>
         /// <param name="subscriber">The subscriber method</param>
-        void Subscribe(Action<Channel> subscriber);
+        void Subscribe(Action<TagDataPoint<double>> subscriber);
     }
 }

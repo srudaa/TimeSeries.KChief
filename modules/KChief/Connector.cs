@@ -12,6 +12,10 @@ using System.Threading.Tasks;
 using Dolittle.Collections;
 using Dolittle.Edge.Modules;
 using Dolittle.Logging;
+using MQTTnet;
+using MQTTnet.Client;
+using MQTTnet.Extensions.ManagedClient;
+using MQTTnet.Protocol;
 
 namespace Dolittle.Edge.KChief
 {
@@ -22,7 +26,7 @@ namespace Dolittle.Edge.KChief
     {
         readonly ILogger _logger;
         readonly IParser _parser;
-        readonly ConcurrentBag<Action<Channel>> _subscribers;
+        readonly ConcurrentBag<Action<TagDataPoint<double>>> _subscribers;
 
         /// <summary>
         /// Initializes a new instance of <see cref="Connector"/>
@@ -33,16 +37,37 @@ namespace Dolittle.Edge.KChief
         {
             _logger = logger;
             _parser = parser;
-            _subscribers = new ConcurrentBag<Action<Channel>>();
+            _subscribers = new ConcurrentBag<Action<TagDataPoint<double>>>();
         }
 
         /// <inheritdoc/>
         public void Start()
         {
+            var options = new ManagedMqttClientOptionsBuilder()
+                .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
+                .WithClientOptions(new MqttClientOptionsBuilder()
+                    .WithClientId("DolittleEdgeModule")
+                    .WithTcpServer("172.129.0.100")
+                    .Build()
+                )
+                .Build();
+            
+            var mqttClient = new MqttFactory().CreateManagedMqttClient();
+            mqttClient.ApplicationMessageReceived += MessageReceived;
+            mqttClient.SubscribeAsync("CloudBoundContainer", MqttQualityOfServiceLevel.AtLeastOnce).Wait();
+            mqttClient.StartAsync(options);
+        }
+
+        void MessageReceived(object sender, MqttApplicationMessageReceivedEventArgs eventArgs)
+        {
+            _logger.Information($"Received MQTT Message on topic '{eventArgs.ApplicationMessage.Topic}'");
+            _parser.Parse(eventArgs.ApplicationMessage.Payload, (tagDataPoint) => {
+                _subscribers.ForEach(_ => _(tagDataPoint));
+            });
         }
 
         /// <inheritdoc/>
-        public void Subscribe(Action<Channel> subscriber)
+        public void Subscribe(Action<TagDataPoint<double>> subscriber)
         {
             _subscribers.Add(subscriber);
         }
