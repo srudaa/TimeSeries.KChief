@@ -25,19 +25,20 @@ namespace Dolittle.Edge.KChief.Protobuf {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CgxLQ2hpZWYucHJvdG8SHURvbGl0dGxlLkVkZ2UuS0NoaWVmLlByb3RvYnVm",
-            "Gh9nb29nbGUvcHJvdG9idWYvdGltZXN0YW1wLnByb3RvIi0KB01lc3NhZ2US",
-            "CQoBYRgBIAEoCBIJCgFiGAMgASgIEgwKBGRhdGEYBCABKAwiSAoJRGF0YVBv",
-            "aW50Ei0KCXRpbWVzdGFtcBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1l",
-            "c3RhbXASDAoEZGF0YRgCIAEoDCJaCg1UYWdEYXRhUG9pbnRzEgsKA3RhZxgB",
-            "IAEoCRI8CgpkYXRhcG9pbnRzGAIgAygLMiguRG9saXR0bGUuRWRnZS5LQ2hp",
-            "ZWYuUHJvdG9idWYuRGF0YVBvaW50Ik4KB1BheWxvYWQSQwoNdGFnZGF0YXBv",
-            "aW50cxgDIAMoCzIsLkRvbGl0dGxlLkVkZ2UuS0NoaWVmLlByb3RvYnVmLlRh",
-            "Z0RhdGFQb2ludHMiRAoIUGF5bG9hZHMSOAoIcGF5bG9hZHMYASADKAsyJi5E",
-            "b2xpdHRsZS5FZGdlLktDaGllZi5Qcm90b2J1Zi5QYXlsb2FkYgZwcm90bzM="));
+            "Gh9nb29nbGUvcHJvdG9idWYvdGltZXN0YW1wLnByb3RvIkQKB01lc3NhZ2US",
+            "FwoPbGlicmFyeV92ZXJzaW9uGAEgASgNEhIKCmNvbXByZXNzZWQYAyABKAgS",
+            "DAoEZGF0YRgEIAEoDCJICglEYXRhUG9pbnQSLQoJdGltZXN0YW1wGAEgASgL",
+            "MhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIMCgRkYXRhGAIgASgBIloK",
+            "DVRhZ0RhdGFQb2ludHMSCwoDdGFnGAEgASgJEjwKCmRhdGFwb2ludHMYAiAD",
+            "KAsyKC5Eb2xpdHRsZS5FZGdlLktDaGllZi5Qcm90b2J1Zi5EYXRhUG9pbnQi",
+            "TgoHUGF5bG9hZBJDCg10YWdkYXRhcG9pbnRzGAMgAygLMiwuRG9saXR0bGUu",
+            "RWRnZS5LQ2hpZWYuUHJvdG9idWYuVGFnRGF0YVBvaW50cyJECghQYXlsb2Fk",
+            "cxI4CghwYXlsb2FkcxgBIAMoCzImLkRvbGl0dGxlLkVkZ2UuS0NoaWVmLlBy",
+            "b3RvYnVmLlBheWxvYWRiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.Message), global::Dolittle.Edge.KChief.Protobuf.Message.Parser, new[]{ "A", "B", "Data" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.Message), global::Dolittle.Edge.KChief.Protobuf.Message.Parser, new[]{ "LibraryVersion", "Compressed", "Data" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.DataPoint), global::Dolittle.Edge.KChief.Protobuf.DataPoint.Parser, new[]{ "Timestamp", "Data" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.TagDataPoints), global::Dolittle.Edge.KChief.Protobuf.TagDataPoints.Parser, new[]{ "Tag", "Datapoints" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.Payload), global::Dolittle.Edge.KChief.Protobuf.Payload.Parser, new[]{ "Tagdatapoints" }, null, null, null),
@@ -73,8 +74,8 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Message(Message other) : this() {
-      a_ = other.a_;
-      b_ = other.b_;
+      libraryVersion_ = other.libraryVersion_;
+      compressed_ = other.compressed_;
       data_ = other.data_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,25 +85,25 @@ namespace Dolittle.Edge.KChief.Protobuf {
       return new Message(this);
     }
 
-    /// <summary>Field number for the "a" field.</summary>
-    public const int AFieldNumber = 1;
-    private bool a_;
+    /// <summary>Field number for the "library_version" field.</summary>
+    public const int LibraryVersionFieldNumber = 1;
+    private uint libraryVersion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool A {
-      get { return a_; }
+    public uint LibraryVersion {
+      get { return libraryVersion_; }
       set {
-        a_ = value;
+        libraryVersion_ = value;
       }
     }
 
-    /// <summary>Field number for the "b" field.</summary>
-    public const int BFieldNumber = 3;
-    private bool b_;
+    /// <summary>Field number for the "compressed" field.</summary>
+    public const int CompressedFieldNumber = 3;
+    private bool compressed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool B {
-      get { return b_; }
+    public bool Compressed {
+      get { return compressed_; }
       set {
-        b_ = value;
+        compressed_ = value;
       }
     }
 
@@ -130,8 +131,8 @@ namespace Dolittle.Edge.KChief.Protobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (A != other.A) return false;
-      if (B != other.B) return false;
+      if (LibraryVersion != other.LibraryVersion) return false;
+      if (Compressed != other.Compressed) return false;
       if (Data != other.Data) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -139,8 +140,8 @@ namespace Dolittle.Edge.KChief.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (A != false) hash ^= A.GetHashCode();
-      if (B != false) hash ^= B.GetHashCode();
+      if (LibraryVersion != 0) hash ^= LibraryVersion.GetHashCode();
+      if (Compressed != false) hash ^= Compressed.GetHashCode();
       if (Data.Length != 0) hash ^= Data.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -155,13 +156,13 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (A != false) {
+      if (LibraryVersion != 0) {
         output.WriteRawTag(8);
-        output.WriteBool(A);
+        output.WriteUInt32(LibraryVersion);
       }
-      if (B != false) {
+      if (Compressed != false) {
         output.WriteRawTag(24);
-        output.WriteBool(B);
+        output.WriteBool(Compressed);
       }
       if (Data.Length != 0) {
         output.WriteRawTag(34);
@@ -175,10 +176,10 @@ namespace Dolittle.Edge.KChief.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (A != false) {
-        size += 1 + 1;
+      if (LibraryVersion != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LibraryVersion);
       }
-      if (B != false) {
+      if (Compressed != false) {
         size += 1 + 1;
       }
       if (Data.Length != 0) {
@@ -195,11 +196,11 @@ namespace Dolittle.Edge.KChief.Protobuf {
       if (other == null) {
         return;
       }
-      if (other.A != false) {
-        A = other.A;
+      if (other.LibraryVersion != 0) {
+        LibraryVersion = other.LibraryVersion;
       }
-      if (other.B != false) {
-        B = other.B;
+      if (other.Compressed != false) {
+        Compressed = other.Compressed;
       }
       if (other.Data.Length != 0) {
         Data = other.Data;
@@ -216,11 +217,11 @@ namespace Dolittle.Edge.KChief.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            A = input.ReadBool();
+            LibraryVersion = input.ReadUInt32();
             break;
           }
           case 24: {
-            B = input.ReadBool();
+            Compressed = input.ReadBool();
             break;
           }
           case 34: {
@@ -281,12 +282,12 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     /// <summary>Field number for the "data" field.</summary>
     public const int DataFieldNumber = 2;
-    private pb::ByteString data_ = pb::ByteString.Empty;
+    private double data_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString Data {
+    public double Data {
       get { return data_; }
       set {
-        data_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        data_ = value;
       }
     }
 
@@ -304,7 +305,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
         return true;
       }
       if (!object.Equals(Timestamp, other.Timestamp)) return false;
-      if (Data != other.Data) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Data, other.Data)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -312,7 +313,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
     public override int GetHashCode() {
       int hash = 1;
       if (timestamp_ != null) hash ^= Timestamp.GetHashCode();
-      if (Data.Length != 0) hash ^= Data.GetHashCode();
+      if (Data != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Data);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -330,9 +331,9 @@ namespace Dolittle.Edge.KChief.Protobuf {
         output.WriteRawTag(10);
         output.WriteMessage(Timestamp);
       }
-      if (Data.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteBytes(Data);
+      if (Data != 0D) {
+        output.WriteRawTag(17);
+        output.WriteDouble(Data);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -345,8 +346,8 @@ namespace Dolittle.Edge.KChief.Protobuf {
       if (timestamp_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Timestamp);
       }
-      if (Data.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
+      if (Data != 0D) {
+        size += 1 + 8;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -365,7 +366,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
         }
         Timestamp.MergeFrom(other.Timestamp);
       }
-      if (other.Data.Length != 0) {
+      if (other.Data != 0D) {
         Data = other.Data;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -386,8 +387,8 @@ namespace Dolittle.Edge.KChief.Protobuf {
             input.ReadMessage(Timestamp);
             break;
           }
-          case 18: {
-            Data = input.ReadBytes();
+          case 17: {
+            Data = input.ReadDouble();
             break;
           }
         }

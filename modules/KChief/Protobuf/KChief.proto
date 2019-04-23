@@ -4,14 +4,14 @@ package Dolittle.Edge.KChief.Protobuf;
 import "google/protobuf/timestamp.proto";
 
 message Message {
-    bool a = 1;
-    bool b = 3;
+    uint32 library_version = 1;
+	bool compressed = 3;
     bytes data = 4;
 }
 
 message DataPoint {
     google.protobuf.Timestamp timestamp = 1;
-    bytes data = 2;
+    double data = 2;
 }
 
 message TagDataPoints {
