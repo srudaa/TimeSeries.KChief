@@ -18,7 +18,7 @@ namespace Dolittle.Edge.KChief
         void Start();
 
         /// <summary>
-        /// Subscribe to <see cref="Channel"/> values coming
+        /// Subscribe to <see cref="TagDataPoint{Double}"/> values coming
         /// </summary>
         /// <param name="subscriber">The subscriber method</param>
         void Subscribe(Action<TagDataPoint<double>> subscriber);

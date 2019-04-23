@@ -53,7 +53,7 @@ namespace Dolittle.Edge.KChief
                                 ControlSystem = "KChief",
                                 Tag = tagDataPoint.Tag.ToLower().StartsWith("c600.tag.") ? tagDataPoint.Tag.Substring(9) : tagDataPoint.Tag,
                                 Timestamp = dataPoint.Timestamp.Seconds*1000 + dataPoint.Timestamp.Nanos/1000000,
-                                Value = BitConverter.ToDouble(dataPoint.Data.ToByteArray(), 0),
+                                Value = dataPoint.Data,
                             });
                         }
                     }
