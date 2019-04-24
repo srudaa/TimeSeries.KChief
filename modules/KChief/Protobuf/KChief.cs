@@ -27,19 +27,19 @@ namespace Dolittle.Edge.KChief.Protobuf {
             "CgxLQ2hpZWYucHJvdG8SHURvbGl0dGxlLkVkZ2UuS0NoaWVmLlByb3RvYnVm",
             "Gh9nb29nbGUvcHJvdG9idWYvdGltZXN0YW1wLnByb3RvIkQKB01lc3NhZ2US",
             "FwoPbGlicmFyeV92ZXJzaW9uGAEgASgNEhIKCmNvbXByZXNzZWQYAyABKAgS",
-            "DAoEZGF0YRgEIAEoDCJICglEYXRhUG9pbnQSLQoJdGltZXN0YW1wGAEgASgL",
-            "MhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIMCgRkYXRhGAIgASgBIloK",
-            "DVRhZ0RhdGFQb2ludHMSCwoDdGFnGAEgASgJEjwKCmRhdGFwb2ludHMYAiAD",
-            "KAsyKC5Eb2xpdHRsZS5FZGdlLktDaGllZi5Qcm90b2J1Zi5EYXRhUG9pbnQi",
-            "TgoHUGF5bG9hZBJDCg10YWdkYXRhcG9pbnRzGAMgAygLMiwuRG9saXR0bGUu",
-            "RWRnZS5LQ2hpZWYuUHJvdG9idWYuVGFnRGF0YVBvaW50cyJECghQYXlsb2Fk",
-            "cxI4CghwYXlsb2FkcxgBIAMoCzImLkRvbGl0dGxlLkVkZ2UuS0NoaWVmLlBy",
-            "b3RvYnVmLlBheWxvYWRiBnByb3RvMw=="));
+            "DAoEZGF0YRgEIAEoDCJJCglEYXRhUG9pbnQSLQoJdGltZXN0YW1wGAEgASgL",
+            "MhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBINCgV2YWx1ZRgCIAMoASJa",
+            "Cg1UYWdEYXRhUG9pbnRzEgsKA3RhZxgBIAEoCRI8CgpkYXRhcG9pbnRzGAIg",
+            "AygLMiguRG9saXR0bGUuRWRnZS5LQ2hpZWYuUHJvdG9idWYuRGF0YVBvaW50",
+            "Ik4KB1BheWxvYWQSQwoNdGFnZGF0YXBvaW50cxgDIAMoCzIsLkRvbGl0dGxl",
+            "LkVkZ2UuS0NoaWVmLlByb3RvYnVmLlRhZ0RhdGFQb2ludHMiRAoIUGF5bG9h",
+            "ZHMSOAoIcGF5bG9hZHMYASADKAsyJi5Eb2xpdHRsZS5FZGdlLktDaGllZi5Q",
+            "cm90b2J1Zi5QYXlsb2FkYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.Message), global::Dolittle.Edge.KChief.Protobuf.Message.Parser, new[]{ "LibraryVersion", "Compressed", "Data" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.DataPoint), global::Dolittle.Edge.KChief.Protobuf.DataPoint.Parser, new[]{ "Timestamp", "Data" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.DataPoint), global::Dolittle.Edge.KChief.Protobuf.DataPoint.Parser, new[]{ "Timestamp", "Value" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.TagDataPoints), global::Dolittle.Edge.KChief.Protobuf.TagDataPoints.Parser, new[]{ "Tag", "Datapoints" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.Payload), global::Dolittle.Edge.KChief.Protobuf.Payload.Parser, new[]{ "Tagdatapoints" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.Payloads), global::Dolittle.Edge.KChief.Protobuf.Payloads.Parser, new[]{ "Payloads_" }, null, null, null)
@@ -260,7 +260,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public DataPoint(DataPoint other) : this() {
       timestamp_ = other.timestamp_ != null ? other.timestamp_.Clone() : null;
-      data_ = other.data_;
+      value_ = other.value_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -280,15 +280,14 @@ namespace Dolittle.Edge.KChief.Protobuf {
       }
     }
 
-    /// <summary>Field number for the "data" field.</summary>
-    public const int DataFieldNumber = 2;
-    private double data_;
+    /// <summary>Field number for the "value" field.</summary>
+    public const int ValueFieldNumber = 2;
+    private static readonly pb::FieldCodec<double> _repeated_value_codec
+        = pb::FieldCodec.ForDouble(18);
+    private readonly pbc::RepeatedField<double> value_ = new pbc::RepeatedField<double>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public double Data {
-      get { return data_; }
-      set {
-        data_ = value;
-      }
+    public pbc::RepeatedField<double> Value {
+      get { return value_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -305,7 +304,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
         return true;
       }
       if (!object.Equals(Timestamp, other.Timestamp)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Data, other.Data)) return false;
+      if(!value_.Equals(other.value_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -313,7 +312,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
     public override int GetHashCode() {
       int hash = 1;
       if (timestamp_ != null) hash ^= Timestamp.GetHashCode();
-      if (Data != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Data);
+      hash ^= value_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -331,10 +330,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
         output.WriteRawTag(10);
         output.WriteMessage(Timestamp);
       }
-      if (Data != 0D) {
-        output.WriteRawTag(17);
-        output.WriteDouble(Data);
-      }
+      value_.WriteTo(output, _repeated_value_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -346,9 +342,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
       if (timestamp_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Timestamp);
       }
-      if (Data != 0D) {
-        size += 1 + 8;
-      }
+      size += value_.CalculateSize(_repeated_value_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -366,9 +360,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
         }
         Timestamp.MergeFrom(other.Timestamp);
       }
-      if (other.Data != 0D) {
-        Data = other.Data;
-      }
+      value_.Add(other.value_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -387,8 +379,9 @@ namespace Dolittle.Edge.KChief.Protobuf {
             input.ReadMessage(Timestamp);
             break;
           }
+          case 18:
           case 17: {
-            Data = input.ReadDouble();
+            value_.AddEntriesFrom(input, _repeated_value_codec);
             break;
           }
         }
