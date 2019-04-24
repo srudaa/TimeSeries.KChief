@@ -33,31 +33,37 @@ namespace Dolittle.Edge.KChief
         /// <inheritdoc/>
         public void Parse(byte[] data, Action<TagDataPoint<double>> callback)
         {
-            var binary = Message.Parser.ParseFrom(data).Data.ToByteArray();
-            var gzipped = binary[0] == 0x1f && binary[1] == 0x8b;
-
-            Stream stream = new MemoryStream(binary);
-            if (gzipped) stream = new GZipStream(stream, CompressionMode.Decompress);
-
-            using (stream)
+            try
             {
-                var payloads = Payloads.Parser.ParseFrom(stream);
+                var message = Message.Parser.ParseFrom(data);
+                
+                Stream stream = new MemoryStream(message.Data.ToByteArray());
+                if (message.Compressed) stream = new GZipStream(stream, CompressionMode.Decompress);
 
-                foreach (var payload in payloads.Payloads_)
+                using (stream)
                 {
-                    foreach (var tagDataPoint in payload.Tagdatapoints)
+                    var payloads = Payloads.Parser.ParseFrom(stream);
+
+                    foreach (var payload in payloads.Payloads_)
                     {
-                        foreach (var dataPoint in tagDataPoint.Datapoints)
+                        foreach (var tagDataPoint in payload.Tagdatapoints)
                         {
-                            callback(new TagDataPoint<double>{
-                                ControlSystem = "KChief",
-                                Tag = tagDataPoint.Tag.ToLower().StartsWith("c600.tag.") ? tagDataPoint.Tag.Substring(9) : tagDataPoint.Tag,
-                                Timestamp = dataPoint.Timestamp.Seconds*1000 + dataPoint.Timestamp.Nanos/1000000,
-                                Value = dataPoint.Data,
-                            });
+                            foreach (var dataPoint in tagDataPoint.Datapoints)
+                            {
+                                callback(new TagDataPoint<double>{
+                                    ControlSystem = "KChief",
+                                    Tag = tagDataPoint.Tag.ToLower().StartsWith("c600.tag.") ? tagDataPoint.Tag.Substring(9) : tagDataPoint.Tag,
+                                    Timestamp = dataPoint.Timestamp.Seconds*1000 + dataPoint.Timestamp.Nanos/1000000,
+                                    Value = dataPoint.Value[0],
+                                });
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Error while parsing payload");
             }
         }
     }
