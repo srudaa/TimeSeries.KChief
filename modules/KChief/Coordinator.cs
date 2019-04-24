@@ -41,7 +41,7 @@ namespace Dolittle.Edge.KChief
 
         void ChannelReceived(TagDataPoint<double> dataPoint)
         {
-            _client.SendAsJson("output", dataPoint).Wait();
+            _client.SendAsJson("output", dataPoint);
         }
     }
 }

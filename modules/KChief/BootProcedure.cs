@@ -16,17 +16,14 @@ namespace Dolittle.Edge.KChief
     public class BootProcedure : ICanPerformBootProcedure
     {
         readonly ICoordinator _coordinator;
-        readonly IParser _parser; // TODO: REMOVE THIS WHEN DONE TESTING
 
         /// <summary>
         /// Initializes a new instance of <see cref="BootProcedure"/>
         /// </summary>
         /// <param name="coordinator"><see cref="ICoordinator"/> to initialize</param>
-        /// <param name="parser">REMOVE THIS WHEN DONE TESTING</param>
-        public BootProcedure(ICoordinator coordinator, IParser parser)
+        public BootProcedure(ICoordinator coordinator)
         {
             _coordinator = coordinator;
-            _parser = parser;
         }
 
         /// <inheritdoc/>
@@ -36,18 +33,6 @@ namespace Dolittle.Edge.KChief
         public void Perform()
         {
             _coordinator.Initialize();
-            
-            // NOTE: This is test code that **MUST** be removed when we've verified it works (PS: clean up using statements :))
-            /*
-            foreach (var path in Directory.EnumerateFiles("../../sample/"))
-            {
-                var message = File.ReadAllBytes(path);
-                _parser.Parse(message, dataPoint => {
-                    var json = JsonConvert.SerializeObject(dataPoint, Formatting.None);
-                    Console.Error.WriteLine(json);
-                });
-            }
-            */
         }
     }
 }
