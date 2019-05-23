@@ -10,14 +10,14 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using Dolittle.Collections;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 using Dolittle.Logging;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Extensions.ManagedClient;
 using MQTTnet.Protocol;
 
-namespace Dolittle.Edge.KChief
+namespace Dolittle.TimeSeries.KChief
 {
     /// <summary>
     /// Represents an implementation for <see cref="IConnector"/>

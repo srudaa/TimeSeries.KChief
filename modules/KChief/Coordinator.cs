@@ -5,10 +5,10 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 using Dolittle.Scheduling;
 
-namespace Dolittle.Edge.KChief
+namespace Dolittle.TimeSeries.KChief
 {
     /// <summary>
     /// Represents an implemention of <see cref="ICoordinator"/>

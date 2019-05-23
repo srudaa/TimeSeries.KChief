@@ -56,7 +56,7 @@ In your `deployment.json` file, you will need to add the module. For more detail
 
 ```json
 "modules": {
-    "Dolittle.Edge.KChief": {
+    "Dolittle.TimeSeries.KChief": {
     "version": "1.0",
     "type": "docker",
     "status": "running",

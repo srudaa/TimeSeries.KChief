@@ -9,7 +9,7 @@ using Dolittle.Logging;
 using Machine.Specifications;
 using Moq;
 
-namespace Dolittle.Edge.KChief.for_Parser.given
+namespace Dolittle.TimeSeries.KChief.for_Parser.given
 {
     public class a_logger
     {

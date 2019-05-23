@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using Machine.Specifications;
 
-namespace Dolittle.Edge.KChief.for_Parser
+namespace Dolittle.TimeSeries.KChief.for_Parser
 {
     [Subject(typeof(Parser))]
     public class when_parsing_a_valid_message_after_a_corrupt_message : given.a_parser

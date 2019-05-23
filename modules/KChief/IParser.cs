@@ -5,9 +5,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 
-namespace Dolittle.Edge.KChief
+namespace Dolittle.TimeSeries.KChief
 {
     /// <summary>
     /// Defines the parser that is capable of parsing the data coming from KChief

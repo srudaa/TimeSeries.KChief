@@ -3,9 +3,9 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 
-namespace Dolittle.Edge.KChief
+namespace Dolittle.TimeSeries.KChief
 {
     /// <summary>
     /// Defines the connector that is responsible for connecting and keeping it with KChief

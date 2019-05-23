@@ -6,12 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Dolittle.Logging;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 using Machine.Specifications;
 using Moq;
 using System.Runtime.CompilerServices;
 
-namespace Dolittle.Edge.KChief.for_Parser.given
+namespace Dolittle.TimeSeries.KChief.for_Parser.given
 {
     public abstract class a_parser : given.a_logger
     {

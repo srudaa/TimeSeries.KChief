@@ -7,12 +7,12 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 using Dolittle.Logging;
-using Dolittle.Edge.KChief.Protobuf;
+using Dolittle.TimeSeries.KChief.Protobuf;
 using System.IO.Compression;
 
-namespace Dolittle.Edge.KChief
+namespace Dolittle.TimeSeries.KChief
 {
     /// <summary>
     /// Represents an implementation of <see cref="IParser"/>

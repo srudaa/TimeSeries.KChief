@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Dolittle.Edge.KChief.Protobuf {
+namespace Dolittle.TimeSeries.KChief.Protobuf {
 
   /// <summary>Holder for reflection information generated from KChief.proto</summary>
   public static partial class KChiefReflection {
@@ -38,11 +38,11 @@ namespace Dolittle.Edge.KChief.Protobuf {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.Message), global::Dolittle.Edge.KChief.Protobuf.Message.Parser, new[]{ "LibraryVersion", "Compressed", "Data" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.DataPoint), global::Dolittle.Edge.KChief.Protobuf.DataPoint.Parser, new[]{ "Timestamp", "Value" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.TagDataPoints), global::Dolittle.Edge.KChief.Protobuf.TagDataPoints.Parser, new[]{ "Tag", "Datapoints" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.Payload), global::Dolittle.Edge.KChief.Protobuf.Payload.Parser, new[]{ "Tagdatapoints" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.Edge.KChief.Protobuf.Payloads), global::Dolittle.Edge.KChief.Protobuf.Payloads.Parser, new[]{ "Payloads_" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.TimeSeries.KChief.Protobuf.Message), global::Dolittle.TimeSeries.KChief.Protobuf.Message.Parser, new[]{ "LibraryVersion", "Compressed", "Data" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.TimeSeries.KChief.Protobuf.DataPoint), global::Dolittle.TimeSeries.KChief.Protobuf.DataPoint.Parser, new[]{ "Timestamp", "Value" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.TimeSeries.KChief.Protobuf.TagDataPoints), global::Dolittle.TimeSeries.KChief.Protobuf.TagDataPoints.Parser, new[]{ "Tag", "Datapoints" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.TimeSeries.KChief.Protobuf.Payload), global::Dolittle.TimeSeries.KChief.Protobuf.Payload.Parser, new[]{ "Tagdatapoints" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Dolittle.TimeSeries.KChief.Protobuf.Payloads), global::Dolittle.TimeSeries.KChief.Protobuf.Payloads.Parser, new[]{ "Payloads_" }, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +57,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Dolittle.Edge.KChief.Protobuf.KChiefReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Dolittle.TimeSeries.KChief.Protobuf.KChiefReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -242,7 +242,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Dolittle.Edge.KChief.Protobuf.KChiefReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Dolittle.TimeSeries.KChief.Protobuf.KChiefReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -398,7 +398,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Dolittle.Edge.KChief.Protobuf.KChiefReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Dolittle.TimeSeries.KChief.Protobuf.KChiefReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -438,11 +438,11 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     /// <summary>Field number for the "datapoints" field.</summary>
     public const int DatapointsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::Dolittle.Edge.KChief.Protobuf.DataPoint> _repeated_datapoints_codec
-        = pb::FieldCodec.ForMessage(18, global::Dolittle.Edge.KChief.Protobuf.DataPoint.Parser);
-    private readonly pbc::RepeatedField<global::Dolittle.Edge.KChief.Protobuf.DataPoint> datapoints_ = new pbc::RepeatedField<global::Dolittle.Edge.KChief.Protobuf.DataPoint>();
+    private static readonly pb::FieldCodec<global::Dolittle.TimeSeries.KChief.Protobuf.DataPoint> _repeated_datapoints_codec
+        = pb::FieldCodec.ForMessage(18, global::Dolittle.TimeSeries.KChief.Protobuf.DataPoint.Parser);
+    private readonly pbc::RepeatedField<global::Dolittle.TimeSeries.KChief.Protobuf.DataPoint> datapoints_ = new pbc::RepeatedField<global::Dolittle.TimeSeries.KChief.Protobuf.DataPoint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Dolittle.Edge.KChief.Protobuf.DataPoint> Datapoints {
+    public pbc::RepeatedField<global::Dolittle.TimeSeries.KChief.Protobuf.DataPoint> Datapoints {
       get { return datapoints_; }
     }
 
@@ -547,7 +547,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Dolittle.Edge.KChief.Protobuf.KChiefReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Dolittle.TimeSeries.KChief.Protobuf.KChiefReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -575,11 +575,11 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     /// <summary>Field number for the "tagdatapoints" field.</summary>
     public const int TagdatapointsFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::Dolittle.Edge.KChief.Protobuf.TagDataPoints> _repeated_tagdatapoints_codec
-        = pb::FieldCodec.ForMessage(26, global::Dolittle.Edge.KChief.Protobuf.TagDataPoints.Parser);
-    private readonly pbc::RepeatedField<global::Dolittle.Edge.KChief.Protobuf.TagDataPoints> tagdatapoints_ = new pbc::RepeatedField<global::Dolittle.Edge.KChief.Protobuf.TagDataPoints>();
+    private static readonly pb::FieldCodec<global::Dolittle.TimeSeries.KChief.Protobuf.TagDataPoints> _repeated_tagdatapoints_codec
+        = pb::FieldCodec.ForMessage(26, global::Dolittle.TimeSeries.KChief.Protobuf.TagDataPoints.Parser);
+    private readonly pbc::RepeatedField<global::Dolittle.TimeSeries.KChief.Protobuf.TagDataPoints> tagdatapoints_ = new pbc::RepeatedField<global::Dolittle.TimeSeries.KChief.Protobuf.TagDataPoints>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Dolittle.Edge.KChief.Protobuf.TagDataPoints> Tagdatapoints {
+    public pbc::RepeatedField<global::Dolittle.TimeSeries.KChief.Protobuf.TagDataPoints> Tagdatapoints {
       get { return tagdatapoints_; }
     }
 
@@ -668,7 +668,7 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Dolittle.Edge.KChief.Protobuf.KChiefReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Dolittle.TimeSeries.KChief.Protobuf.KChiefReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -696,11 +696,11 @@ namespace Dolittle.Edge.KChief.Protobuf {
 
     /// <summary>Field number for the "payloads" field.</summary>
     public const int Payloads_FieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Dolittle.Edge.KChief.Protobuf.Payload> _repeated_payloads_codec
-        = pb::FieldCodec.ForMessage(10, global::Dolittle.Edge.KChief.Protobuf.Payload.Parser);
-    private readonly pbc::RepeatedField<global::Dolittle.Edge.KChief.Protobuf.Payload> payloads_ = new pbc::RepeatedField<global::Dolittle.Edge.KChief.Protobuf.Payload>();
+    private static readonly pb::FieldCodec<global::Dolittle.TimeSeries.KChief.Protobuf.Payload> _repeated_payloads_codec
+        = pb::FieldCodec.ForMessage(10, global::Dolittle.TimeSeries.KChief.Protobuf.Payload.Parser);
+    private readonly pbc::RepeatedField<global::Dolittle.TimeSeries.KChief.Protobuf.Payload> payloads_ = new pbc::RepeatedField<global::Dolittle.TimeSeries.KChief.Protobuf.Payload>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Dolittle.Edge.KChief.Protobuf.Payload> Payloads_ {
+    public pbc::RepeatedField<global::Dolittle.TimeSeries.KChief.Protobuf.Payload> Payloads_ {
       get { return payloads_; }
     }
 

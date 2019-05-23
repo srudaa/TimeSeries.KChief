@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using Machine.Specifications;
 
-namespace Dolittle.Edge.KChief.for_Parser
+namespace Dolittle.TimeSeries.KChief.for_Parser
 {
     [Subject(typeof(Parser))]
     public class when_parsing_garbage : given.a_parser

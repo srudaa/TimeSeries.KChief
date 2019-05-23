@@ -1,5 +1,5 @@
 syntax = "proto3";
-package Dolittle.Edge.KChief.Protobuf;
+package Dolittle.TimeSeries.KChief.Protobuf;
 
 import "google/protobuf/timestamp.proto";
 
