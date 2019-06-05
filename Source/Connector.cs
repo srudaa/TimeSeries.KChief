@@ -16,6 +16,7 @@ using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Extensions.ManagedClient;
 using MQTTnet.Protocol;
+using Dolittle.Configuration;
 
 namespace Dolittle.TimeSeries.KChief
 {
@@ -24,21 +25,26 @@ namespace Dolittle.TimeSeries.KChief
     /// </summary>
     public class Connector : IConnector
     {
+        readonly ConnectorConfiguration _configuration;
         readonly ILogger _logger;
         readonly IParser _parser;
         readonly ConcurrentBag<Action<TagDataPoint<double>>> _subscribers;
-
+        
         /// <summary>
         /// Initializes a new instance of <see cref="Connector"/>
         /// </summary>
+        /// <param name="configuration"><see cref="ConnectorConfiguration">Configuration</see></param>
         /// <param name="logger"><see cref="ILogger"/> for logging</param>
         /// <param name="parser"><see cref="IParser"/> for dealing with the actual parsing</param>
-        public Connector(ILogger logger, IParser parser)
+        public Connector(ConnectorConfiguration configuration, ILogger logger, IParser parser)
         {
+            _configuration = configuration;
             _logger = logger;
             _parser = parser;
             _subscribers = new ConcurrentBag<Action<TagDataPoint<double>>>();
+            _logger.Information($"Will connect to '{configuration.Ip}:{configuration.Port}'");
         }
+
 
         /// <inheritdoc/>
         public void Start()
@@ -47,7 +53,7 @@ namespace Dolittle.TimeSeries.KChief
                 .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
                 .WithClientOptions(new MqttClientOptionsBuilder()
                     .WithClientId("DolittleEdgeModule")
-                    .WithTcpServer("172.129.0.100")
+                    .WithTcpServer(_configuration.Ip, _configuration.Port)
                     .Build()
                 )
                 .Build();

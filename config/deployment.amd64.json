@@ -39,7 +39,7 @@
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "dolittle/edge-KChief:1.0.0-amd64",
+              "image": "dolittle/timeseries-kchief:1.0.0-amd64",
               "createOptions": "{\"HostConfig\":{}}"
             }
           },
@@ -49,7 +49,7 @@
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "dolittle/edge-mqtt:1.0.0-amd64",
+              "image": "dolittle/timeseries-mqtt:1.0.5-amd64",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"1883/tcp\":[{\"HostPort\":\"1883\"}]}}}"
             }
           }
@@ -64,6 +64,14 @@
         },
         "storeAndForwardConfiguration": {
           "timeToLiveSecs": 7200
+        }
+      }
+    },
+    "KChief": {
+      "properties.desired": {
+        "connector": {
+          "ip": "172.129.0.100",
+          "port": 8883
         }
       }
     }

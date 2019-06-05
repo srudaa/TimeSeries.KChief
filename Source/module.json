@@ -3,6 +3,7 @@
     "description": "",
     "image": {
         "repository": "dolittle/timeseries-kchief",
+        "version": "1.0.0",
         "tag": {
             "version": "1.0.0",
             "platforms": {
