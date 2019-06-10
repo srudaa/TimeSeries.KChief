@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../modules/KChief/KChief.csproj"/>
+    <ProjectReference Include="../Source/KChief.csproj"/>
   </ItemGroup>
 
 </Project>
