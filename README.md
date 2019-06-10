@@ -64,7 +64,7 @@ In your `deployment.json` file, you will need to add the module. For more detail
     "status": "running",
     "restartPolicy": "always",
     "settings": {
-        "image": "dolittle/edge-KChief",
+        "image": "dolittle/timeseries-kchief",
         "createOptions": {
         "HostConfig": {}
     }
