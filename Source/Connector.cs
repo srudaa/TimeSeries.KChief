@@ -2,80 +2,59 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System;
-using System.Collections.Concurrent;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading;
-using System.Threading.Tasks;
-using Dolittle.Collections;
 using Dolittle.TimeSeries.Modules;
 using Dolittle.Logging;
 using MQTTnet;
-using MQTTnet.Client;
-using MQTTnet.Extensions.ManagedClient;
-using MQTTnet.Protocol;
-using Dolittle.Configuration;
+using Dolittle.TimeSeries.Modules.Connectors;
+using MQTTnet.Server;
 
 namespace Dolittle.TimeSeries.KChief
 {
     /// <summary>
-    /// Represents an implementation for <see cref="IConnector"/>
+    /// Represents an implementation for <see cref="IAmAStreamingConnector"/>
     /// </summary>
-    public class Connector : IConnector
+    public class Connector : IAmAStreamingConnector
     {
-        readonly ConnectorConfiguration _configuration;
+        /// <inheritdoc/>
+        public event DataReceived DataReceived = (tag, ValueTask, timestamp) => {};
         readonly ILogger _logger;
         readonly IParser _parser;
-        readonly ConcurrentBag<Action<TagDataPoint<double>>> _subscribers;
         
         /// <summary>
         /// Initializes a new instance of <see cref="Connector"/>
         /// </summary>
-        /// <param name="configuration"><see cref="ConnectorConfiguration">Configuration</see></param>
         /// <param name="logger"><see cref="ILogger"/> for logging</param>
         /// <param name="parser"><see cref="IParser"/> for dealing with the actual parsing</param>
-        public Connector(ConnectorConfiguration configuration, ILogger logger, IParser parser)
+        public Connector(ILogger logger, IParser parser)
         {
-            _configuration = configuration;
             _logger = logger;
             _parser = parser;
-            _subscribers = new ConcurrentBag<Action<TagDataPoint<double>>>();
-            _logger.Information($"Will connect to '{configuration.Ip}:{configuration.Port}'");
+            _logger.Information($"Will expose MQTT");
         }
 
+        /// <inheritdoc/>
+        public Source Name => "KChief";
 
         /// <inheritdoc/>
-        public void Start()
+        public void Connect()
         {
-            var options = new ManagedMqttClientOptionsBuilder()
-                .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
-                .WithClientOptions(new MqttClientOptionsBuilder()
-                    .WithClientId("DolittleEdgeModule")
-                    .WithTcpServer(_configuration.Ip, _configuration.Port)
-                    .Build()
-                )
-                .Build();
-            
-            var mqttClient = new MqttFactory().CreateManagedMqttClient();
-            mqttClient.ApplicationMessageReceived += MessageReceived;
-            mqttClient.SubscribeAsync("CloudBoundContainer", MqttQualityOfServiceLevel.AtLeastOnce).Wait();
-            mqttClient.StartAsync(options);
+            var optionsBuilder = new MqttServerOptionsBuilder()
+                .WithDefaultEndpointPort(1883);
+            var options = optionsBuilder.Build();
+
+            var server = new MqttFactory().CreateMqttServer();
+            server.ClientConnected += (s,e) => _logger.Information($"Client {e.ClientId} connected");
+            server.ClientDisconnected += (s,e) => _logger.Information($"Client {e.ClientId} disconnected");
+            server.ApplicationMessageReceived += MessageReceived;
+            server.StartAsync(options);
         }
 
         void MessageReceived(object sender, MqttApplicationMessageReceivedEventArgs eventArgs)
         {
             _logger.Information($"Received MQTT Message on topic '{eventArgs.ApplicationMessage.Topic}'");
             _parser.Parse(eventArgs.ApplicationMessage.Payload, (tagDataPoint) => {
-                _subscribers.ForEach(_ => _(tagDataPoint));
+                DataReceived(tagDataPoint.Tag, tagDataPoint.Value, tagDataPoint.Timestamp);
             });
-        }
-
-        /// <inheritdoc/>
-        public void Subscribe(Action<TagDataPoint<double>> subscriber)
-        {
-            _subscribers.Add(subscriber);
         }
     }
 }

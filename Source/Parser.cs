@@ -51,7 +51,7 @@ namespace Dolittle.TimeSeries.KChief
                             foreach (var dataPoint in tagDataPoint.Datapoints)
                             {
                                 callback(new TagDataPoint<double>{
-                                    ControlSystem = "KChief",
+                                    Source = "KChief",
                                     Tag = tagDataPoint.Tag.ToLower().StartsWith("c600.tag.") ? tagDataPoint.Tag.Substring(9) : tagDataPoint.Tag,
                                     Timestamp = dataPoint.Timestamp.Seconds*1000 + dataPoint.Timestamp.Nanos/1000000,
                                     Value = dataPoint.Value[0],
