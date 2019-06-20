@@ -39,4 +39,6 @@ FROM base
 WORKDIR /app
 COPY --from=build-env /app/Source/out ./
 
+EXPOSE 1883
+
 ENTRYPOINT ["dotnet", "Dolittle.TimeSeries.KChief.dll"]
