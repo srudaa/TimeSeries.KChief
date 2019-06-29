@@ -39,7 +39,7 @@
                         "status": "running",
                         "restartPolicy": "always",
                         "settings": {
-                            "image": "dolittle/timeseries-kchief",
+                            "image": "shipos/timeseries-kchief",
                             "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"1883/tcp\":[{\"HostPort\":\"1883\"}]}}}"
                         }
                     }
