@@ -1,6 +1,6 @@
 # KChief
 
-[![Build Status](https://dolittle.visualstudio.com/Dolittle%20open-source%20repositories/_apis/build/status/dolittle-timeseries.KChief?branchName=master)](https://dolittle.visualstudio.com/Dolittle%20open-source%20repositories/_build/latest?definitionId=12&branchName=master)
+[![Build Status](https://dev.azure.com/shipos/OpenSource%20Projects/_apis/build/status/shipos-foundation.TimeSeries.KChief?branchName=master)](https://dev.azure.com/shipos/OpenSource%20Projects/_build/latest?definitionId=2&branchName=master)
 
 ## Cloning
 
