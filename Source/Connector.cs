@@ -7,9 +7,11 @@ using Dolittle.Logging;
 using MQTTnet;
 using Dolittle.TimeSeries.Modules.Connectors;
 using MQTTnet.Server;
-using MQTTnet.Client;
 using MQTTnet.Extensions.ManagedClient;
+using MQTTnet.Client;
+using System;
 using MQTTnet.Protocol;
+
 namespace Dolittle.TimeSeries.KChief
 {
     /// <summary>
@@ -44,23 +46,18 @@ namespace Dolittle.TimeSeries.KChief
         /// <inheritdoc/>
         public void Connect()
         {
-
-            switch (_configuration.MQTTClient)
+             switch (_configuration.MQTTClient)
             {
-                case true:
-                var optionsBuilder = new ManagedMqttClientOptionsBuilder()
-                                .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
-                                .WithClientOptions(new MqttClientOptionsBuilder()
-                                    .WithClientId("DolittleEdgeModule")
-                                    .WithTcpServer(_configuration.Ip, _configuration.Port)
-                                    .Build()
-                                )
-                                .Build();
-
-                break;
-                case Protocol.Udp: ConnectUdp(); break;
-                default: _logger.Error("Protocol not defined"); break;
+                case true: ConnectMQTTClient(); break;
+                case false: ConnectMQTTBroker(); break;
+                default: _logger.Error("MQTTClient not defined"); break;
             }
+            
+        }
+
+        void ConnectMQTTBroker()
+        {
+            _logger.Information("Starting MQTT Broker");
 
             var optionsBuilder = new MqttServerOptionsBuilder()
                 .WithDefaultEndpointPort(1883);
@@ -73,6 +70,24 @@ namespace Dolittle.TimeSeries.KChief
             server.StartAsync(options);
         }
 
+        void ConnectMQTTClient()
+        {
+            _logger.Information("Starting MQTT Client");
+          
+            var options = new ManagedMqttClientOptionsBuilder()
+                .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
+                .WithClientOptions(new MqttClientOptionsBuilder()
+                    .WithClientId("DolittleEdgeModule")
+                    .WithTcpServer(_configuration.Ip, _configuration.Port)
+                    .Build()
+                )
+                .Build();
+            
+            var mqttClient = new MqttFactory().CreateManagedMqttClient();
+            mqttClient.ApplicationMessageReceived += MessageReceived;
+            mqttClient.SubscribeAsync("CloudBoundContainer", MqttQualityOfServiceLevel.AtLeastOnce).Wait();
+            mqttClient.StartAsync(options);
+        }
         void MessageReceived(object sender, MqttApplicationMessageReceivedEventArgs eventArgs)
         {
             _logger.Information($"Received MQTT Message on topic '{eventArgs.ApplicationMessage.Topic}'");
